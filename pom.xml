@@ -6,4 +6,9 @@
   <packaging>pom</packaging>
   <name>Arquitectura</name>
   <description>Arquitectura</description>
+  <modules>
+  	<module>commons-service</module>
+  	<module>commons-tipo-producto</module>
+  	<module>servicio-tipo-producto</module>
+  </modules>
 </project>
