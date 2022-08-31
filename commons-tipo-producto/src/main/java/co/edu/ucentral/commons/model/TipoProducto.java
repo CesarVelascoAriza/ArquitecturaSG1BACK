@@ -1,5 +1,6 @@
 package co.edu.ucentral.commons.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +20,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tipo_productos")
-public class TipoProducto {
+public class TipoProducto implements Serializable {
 
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotEmpty(message = "no puede estar vacio")
-	@Size(min = 8, max = 40, message = "tiene que estar entre 8 y 40 caracteres")
+	@Size(min = 4, max = 40, message = "tiene que estar entre 8 y 40 caracteres")
 	@Column(length = 40)
 	private String producto;
 	@JsonIgnoreProperties(allowSetters = true, value = {"producto"})
