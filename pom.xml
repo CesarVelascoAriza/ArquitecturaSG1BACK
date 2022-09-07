@@ -10,5 +10,9 @@
   	<module>commons-service</module>
   	<module>commons-tipo-producto</module>
   	<module>servicio-tipo-producto</module>
+  	<module>commons-usuario</module>
+  	<module>servicio-autenticacion</module>
+  	<module>servicio-parametro</module>
+  	<module>servicio-usuario</module>
   </modules>
 </project>
