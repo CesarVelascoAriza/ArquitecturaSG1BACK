@@ -6,4 +6,5 @@ insert into tipo_productos(producto)values("paquete");
 
 insert into poductos_parametros (producto_id,parametro_id) values (1,1);
 insert into poductos_parametros (producto_id,parametro_id) values (1,2);
-insert into poductos_parametros (producto_id,parametro_id) values (1,3); 
+insert into poductos_parametros (producto_id,parametro_id) values (1,3);
+ 

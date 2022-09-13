@@ -40,7 +40,7 @@ public class Usuario implements Serializable{
 	@Size(min = 8, max = 30, message = "no puede ser menor de 8 o mayor de 30")
 	private String direccion;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "correo", nullable = false)
+	@JoinColumn(name = "correo", nullable = false, unique = true)
 	private Autenticacion correo;
 	@Column(length = 15)
 	@NotEmpty(message = "no puede estar vacio")

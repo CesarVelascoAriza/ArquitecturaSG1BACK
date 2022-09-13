@@ -1,4 +1,4 @@
-package co.edu.ucentral.commons.usuario.models;
+package co.edu.ucentral.common.empleado.model;
 
 import java.io.Serializable;
 
@@ -10,34 +10,34 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="tipo_documentos" )
-public class TipoDocumento implements Serializable {
+@Table(name = "roles")
+public class Rol implements Serializable {
 
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length = 30)
-	private String descripcion;
-	
-	
-	
+	@Column(length = 45, name = "nombre_rol",unique = true)
+	private String nombreRol;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescripcion() {
-		return descripcion;
+
+	public String getNombreRol() {
+		return nombreRol;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
 	}
-	
-	
+
 }

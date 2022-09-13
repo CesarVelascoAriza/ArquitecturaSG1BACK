@@ -14,5 +14,11 @@
   	<module>servicio-autenticacion</module>
   	<module>servicio-parametro</module>
   	<module>servicio-usuario</module>
+  	<module>servicio-empleado</module>
   </modules>
+  <scm>
+  	<url>https://github.com/CesarVelascoAriza/ArquitecturaSG1BACK</url>
+  	<developerConnection>cvelasco@ucentral.edu.co</developerConnection>
+  	<connection>asda</connection>
+  </scm>
 </project>

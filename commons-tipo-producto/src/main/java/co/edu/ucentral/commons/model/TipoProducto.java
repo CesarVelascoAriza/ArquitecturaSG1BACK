@@ -41,7 +41,7 @@ public class TipoProducto implements Serializable {
 	private List<ProductosParametros> produtoParametro;
 
 	public TipoProducto() {
-		produtoParametro = new ArrayList<ProductosParametros>();
+		this.produtoParametro = new ArrayList<ProductosParametros>();
 	}
 
 	public Long getId() {
@@ -66,18 +66,18 @@ public class TipoProducto implements Serializable {
 
 	public void setProdutoParametro(List<ProductosParametros> produtoParametro) {
 		this.produtoParametro.clear();
-		 produtoParametro.forEach(this::addParametro);
+		produtoParametro.forEach(this::addParametro);
 	}
 
-	public void addParametro(ProductosParametros parametro) {
-		this.produtoParametro.add(parametro);
-		parametro.setProducto(this);
+	public void addParametro(ProductosParametros productosParametro) {
+		this.produtoParametro.add(productosParametro);
+		productosParametro.setProducto(this);
 
 	}
 
-	public void removeParametro(ProductosParametros parametro) {
-		this.produtoParametro.remove(parametro);
-		parametro.setProducto(null);
+	public void removeParametro(ProductosParametros productosParametro) {
+		this.produtoParametro.remove(productosParametro);
+		productosParametro.setProducto(null);
 	}
 
 }
