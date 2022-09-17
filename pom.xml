@@ -15,6 +15,11 @@
   	<module>servicio-parametro</module>
   	<module>servicio-usuario</module>
   	<module>servicio-empleado</module>
+  	<module>common-despacho</module>
+  	<module>common-empleado</module>
+  	
+  	<module>servicio-despacho</module>
+  	<module>servicio-oficina</module>
   </modules>
   <scm>
   	<url>https://github.com/CesarVelascoAriza/ArquitecturaSG1BACK</url>
