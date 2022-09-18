@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "variable")
-public class Variable implements Serializable {
+@Table(name = "categorias")
+public class Categoria implements Serializable {
 
 	/**
 	 * 
@@ -21,8 +23,11 @@ public class Variable implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length = 45, name = "nombre_var")
+	@Column(name = "nombre_cat", length = 45)
 	private String nombre;
+	@ManyToOne
+	@JoinColumn(name = "variable_id")
+	private Variable varible;
 
 	public Long getId() {
 		return id;
@@ -38,6 +43,14 @@ public class Variable implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Variable getVarible() {
+		return varible;
+	}
+
+	public void setVarible(Variable varible) {
+		this.varible = varible;
 	}
 
 }
