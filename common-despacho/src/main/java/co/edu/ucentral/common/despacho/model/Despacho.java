@@ -3,6 +3,7 @@ package co.edu.ucentral.common.despacho.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +33,10 @@ public class Despacho implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
-	@ManyToOne
-	@JoinColumn(name = "estado_id")
-	private Estado estado;
+	@Column(length = 500)
+	private String observaciones;
+	private boolean estadoDespacho;
+	
 
 	public Despacho() {
 		// TODO Auto-generated constructor stub
@@ -80,12 +82,25 @@ public class Despacho implements Serializable {
 		this.vehiculo = vehiculo;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	
+	public String getObservaciones() {
+		return observaciones;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
+
+	public boolean isEstadoDespacho() {
+		return estadoDespacho;
+	}
+
+	public void setEstadoDespacho(boolean estadoDespacho) {
+		this.estadoDespacho = estadoDespacho;
+	}
+
+	
+
+	
 
 }
