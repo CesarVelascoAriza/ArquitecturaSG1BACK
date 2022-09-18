@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.ucentral.common.empleado.model.Empleado;
-import co.edu.ucentral.commons.usuario.models.Autenticacion;
+import co.edu.ucentral.commons.usuario.models.Correo;
 import co.edu.ucentral.commons.usuario.models.Usuario;
 import co.edu.ucentral.servicio.atenticacion.service.AutenticacionService;
 
@@ -22,15 +21,13 @@ public class AutenticacionController {
 	private AutenticacionService service;
 
 	@PostMapping
-	public ResponseEntity<?> consutarUsuariosBycontrasenia(@Valid @RequestBody Autenticacion autenticacion){
+	public ResponseEntity<?> consutarUsuariosBycontrasenia(@Valid @RequestBody Correo autenticacion){
 		Optional<Usuario> optional = service.findByUsuarioAndContrasenia(autenticacion.getUsuario(), autenticacion.getContrasenia());
-		Optional<Empleado> optionalEmpleado= service.findByContraseniaAndUsuario(autenticacion.getContrasenia(), autenticacion.getUsuario());
-		if(optional.isPresent()) {
-			return ResponseEntity.ok().body(optional.get());	
-		}else if(optionalEmpleado.isPresent()) {
-			return ResponseEntity.ok().body(optionalEmpleado.get());
+		if(!optional.isPresent()) {
+			return ResponseEntity.notFound().build();
+				
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(optional.get());
 		
 	}
 }

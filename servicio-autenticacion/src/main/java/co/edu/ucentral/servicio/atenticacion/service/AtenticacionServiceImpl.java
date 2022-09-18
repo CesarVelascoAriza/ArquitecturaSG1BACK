@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.ucentral.common.empleado.model.Empleado;
 import co.edu.ucentral.commons.usuario.models.Usuario;
 import co.edu.ucentral.servicio.atenticacion.repository.AutenticacionReposository;
 @Service
@@ -22,11 +21,11 @@ public class AtenticacionServiceImpl implements AutenticacionService {
 	}
 
 
-	@Override
+	/*@Override
 	public Optional<Empleado> findByContraseniaAndUsuario(String contrasenia, String usuario) {
 		// TODO Auto-generated method stub
 		return repository.findEmpleadosByContraseniaAndUsuario(contrasenia, usuario);
 	}
 	
-
+*/
 }

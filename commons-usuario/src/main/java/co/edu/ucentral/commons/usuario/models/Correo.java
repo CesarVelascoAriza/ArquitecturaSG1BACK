@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "correos")
-public class Autenticacion implements Serializable {
+public class Correo implements Serializable {
 
 	
 	/**

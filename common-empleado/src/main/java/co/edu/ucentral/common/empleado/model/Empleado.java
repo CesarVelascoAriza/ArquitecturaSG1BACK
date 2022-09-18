@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import co.edu.ucentral.commons.usuario.models.Autenticacion;
+import co.edu.ucentral.commons.usuario.models.Correo;
 import co.edu.ucentral.commons.usuario.models.TipoDocumento;
 
 @Entity
@@ -39,7 +39,7 @@ public class Empleado implements Serializable {
 	private Rol rol;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "correo", nullable = false, unique = true)	
-	private Autenticacion correo;
+	private Correo correo;
 	
 
 	public Empleado() {
@@ -47,7 +47,7 @@ public class Empleado implements Serializable {
 	
 	
 	public Empleado(Long numeroDocumento, TipoDocumento tipo, String nombre, String apellido, Date fechaNacimeinto,
-			Rol rol, Autenticacion coreo) {
+			Rol rol, Correo coreo) {
 		super();
 		this.numeroDocumento = numeroDocumento;
 		this.tipo = tipo;
@@ -107,11 +107,11 @@ public class Empleado implements Serializable {
 		this.rol = rol;
 	}
 
-	public Autenticacion getCoreo() {
+	public Correo getCoreo() {
 		return correo;
 	}
 
-	public void setCoreo(Autenticacion coreo) {
+	public void setCoreo(Correo coreo) {
 		this.correo = coreo;
 	}
 	

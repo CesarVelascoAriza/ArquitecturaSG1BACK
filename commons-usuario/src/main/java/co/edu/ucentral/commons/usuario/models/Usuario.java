@@ -1,16 +1,17 @@
 package co.edu.ucentral.commons.usuario.models;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -36,39 +37,28 @@ public class Usuario implements Serializable{
 	@Size(min = 4, max = 30, message = "no puede ser menor de 4 o mayor de 30")
 	private String apellido;
 	@Column(length = 30)
-	@NotEmpty(message = "no puede estar vacio")
-	@Size(min = 8, max = 30, message = "no puede ser menor de 8 o mayor de 30")
 	private String direccion;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "correo", nullable = false, unique = true)
-	private Autenticacion correo;
+	@Column(length = 60)
+	@NotEmpty(message = "no puede estar vacio")
+	@Size(min = 8, max = 60, message = "no puede ser menor de 8 o mayor de 60")
+	private String correo;
 	@Column(length = 15)
 	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 8, max = 11, message = "no puede ser menor de 8 o mayor de 11")
 	private String telefono;
-
+	@Column(length = 30,unique = true)
+	private String usuario;
+	private String contrasenia;
+	@ManyToMany
+	@JoinTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"usuario_id", "role_id" }))
+	private List<Rol> roles;
 	
 	public Usuario() {
 
 	}
 	
-	public Usuario(
-			Long numeroDocumento, 
-			TipoDocumento tipo,
-			String nombre,
-			String apellido,
-			String direccion,
-			Autenticacion correo,
-			String telefono) {
-		super();
-		this.numeroDocumento = numeroDocumento;
-		this.tipo = tipo;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.direccion = direccion;
-		this.correo = correo;
-		this.telefono = telefono;
-	}
+	
 
 	public Long getNumeroDocumento() {
 		return numeroDocumento;
@@ -110,14 +100,6 @@ public class Usuario implements Serializable{
 		this.direccion = direccion;
 	}
 
-	public Autenticacion getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(Autenticacion correo) {
-		this.correo = correo;
-	}
-
 	public String getTelefono() {
 		return telefono;
 	}
@@ -126,4 +108,53 @@ public class Usuario implements Serializable{
 		this.telefono = telefono;
 	}
 
+
+
+	public String getCorreo() {
+		return correo;
+	}
+
+
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
+	
 }
