@@ -1,3 +1,3 @@
-insert into parametros (descripcion_parametro) values ("peso");
-insert into parametros (descripcion_parametro) values ("largo");
-insert into parametros (descripcion_parametro) values ("ancho");
+insert into variables(nombre_var) values ('peso');
+
+insert into categorias(nombre_cat,variable_id) values('extra liviano',1);

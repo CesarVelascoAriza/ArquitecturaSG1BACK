@@ -1,4 +1,4 @@
-package co.edu.ucentral.servicio.parametro.repository;
+package co.edu.ucentral.servicio.categoria.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

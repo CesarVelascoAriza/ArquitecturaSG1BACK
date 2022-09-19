@@ -1,4 +1,4 @@
-package co.edu.ucentral.servicio.parametro.controller;
+package co.edu.ucentral.servicio.categoria.controller;
 
 import java.util.Optional;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.ucentral.commons.model.Categoria;
 import co.edu.ucentral.commons.services.controller.CommonsController;
-import co.edu.ucentral.servicio.parametro.service.ParametroService;
+import co.edu.ucentral.servicio.categoria.service.ParametroService;
 
 @RestController
 public class ParametroController extends CommonsController<Categoria, ParametroService> {

@@ -46,8 +46,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>co.edu.ucentral.commons.producto</groupId>
-			<artifactId>commons-tipo-producto</artifactId>
+			<groupId>co.edu.ucentral.commons.tarifas</groupId>
+			<artifactId>commons-tarifas</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		

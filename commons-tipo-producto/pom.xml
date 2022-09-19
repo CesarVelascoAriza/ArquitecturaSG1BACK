@@ -8,8 +8,8 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>co.edu.ucentral.commons.producto</groupId>
-	<artifactId>commons-tipo-producto</artifactId>
+	<groupId>co.edu.ucentral.commons.tarifas</groupId>
+	<artifactId>commons-tarifas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>commons-tipo-producto</name>
 	<description>Demo project for Spring Boot</description>
