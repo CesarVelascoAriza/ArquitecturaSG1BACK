@@ -52,9 +52,6 @@ public class Envio implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "tarifa_id")
 	private Tarifa tarifa;
-	@ManyToOne
-	@JoinColumn(name = "categoria_id")
-	private Tarifa tarifaCategoriaId;
 
 	@PrePersist
 	public void prePersist() {
@@ -117,12 +114,5 @@ public class Envio implements Serializable{
 		this.tarifa = tarifa;
 	}
 
-	public Tarifa getTarifaCategoriaId() {
-		return tarifaCategoriaId;
-	}
-
-	public void setTarifaCategoriaId(Tarifa tarifaCategoriaId) {
-		this.tarifaCategoriaId = tarifaCategoriaId;
-	}
-
+	
 }
