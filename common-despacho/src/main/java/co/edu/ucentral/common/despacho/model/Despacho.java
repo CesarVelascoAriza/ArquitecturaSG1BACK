@@ -35,7 +35,9 @@ public class Despacho implements Serializable {
 	private Vehiculo vehiculo;
 	@Column(length = 500)
 	private String observaciones;
-	private boolean estadoDespacho;
+	@ManyToOne
+	@JoinColumn(name = "estado_id")
+	private Estado estadoDespacho;
 	
 
 	public Despacho() {
@@ -91,13 +93,15 @@ public class Despacho implements Serializable {
 		this.observaciones = observaciones;
 	}
 
-	public boolean isEstadoDespacho() {
+	public Estado getEstadoDespacho() {
 		return estadoDespacho;
 	}
 
-	public void setEstadoDespacho(boolean estadoDespacho) {
+	public void setEstadoDespacho(Estado estadoDespacho) {
 		this.estadoDespacho = estadoDespacho;
 	}
+
+	
 
 	
 

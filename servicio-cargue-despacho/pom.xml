@@ -9,10 +9,10 @@
 		<version>2.7.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>co.edu.ucentral.servicio.envios</groupId>
-	<artifactId>servicio-envios</artifactId>
+	<groupId>co.edu.ucentral.servicio.cargue.despacho</groupId>
+	<artifactId>servicio-cargue-despacho</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>servicio-envios</name>
+	<name>servicio-cargue-despacho</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -20,32 +20,16 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>co.edu.ucentral.commons.service</groupId>
-			<artifactId>commons-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.edu.ucentral.commons.tarifas</groupId>
-			<artifactId>commons-tarifas</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.edu.ucentral.common.oficina</groupId>
-			<artifactId>common-oficina</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.edu.ucentral.commons.usuario</groupId>
-			<artifactId>commons-usuario</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -65,20 +49,16 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<groupId>co.edu.ucentral.commons.service</groupId>
+			<artifactId>commons-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.ucentral.common.despacho</groupId>
+			<artifactId>common-despacho</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -90,4 +70,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
