@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tarifas")
@@ -23,8 +26,12 @@ public class Tarifa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotEmpty(message = "no puede estar vacio")
+	@PositiveOrZero(message = "no pueser negativo y mayor a cero")
 	@Column(name = "min")
 	private int valorMin;
+	@NotEmpty(message = "no puede estar vacio")
+	@PositiveOrZero(message = "no pueser negativo y mayor a cero")
 	@Column(name = "max")
 	private int valorMax;
 	@ManyToOne
