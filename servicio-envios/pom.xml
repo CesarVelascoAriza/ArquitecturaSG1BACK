@@ -25,18 +25,8 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>co.edu.ucentral.commons.tarifas</groupId>
-			<artifactId>commons-tarifas</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.edu.ucentral.common.oficina</groupId>
-			<artifactId>common-oficina</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>co.edu.ucentral.commons.usuario</groupId>
-			<artifactId>commons-usuario</artifactId>
+			<groupId>co.edu.ucentral.common-envio</groupId>
+			<artifactId>common-envio</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

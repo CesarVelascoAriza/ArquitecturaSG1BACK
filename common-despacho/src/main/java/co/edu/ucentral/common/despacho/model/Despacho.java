@@ -10,9 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "despachos")
@@ -30,6 +33,7 @@ public class Despacho implements Serializable {
 	private Date fechaDespacho;
 	private String origen;
 	private String destino;
+	@JsonIgnoreProperties(allowGetters = true)
 	@ManyToOne
 	@JoinColumn(name = "vehiculo_id")
 	private Vehiculo vehiculo;
@@ -44,6 +48,10 @@ public class Despacho implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	@PrePersist
+	public void prePersist() {
+		fechaDespacho = new Date();
+	}
 	public Long getId() {
 		return id;
 	}

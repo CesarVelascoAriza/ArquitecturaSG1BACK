@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,9 +28,9 @@ public class Categoria implements Serializable {
 	private Long id;
 	@NotEmpty(message = "no puede estar vacio")
 	@Size(max = 45,min =2 , message = "dene tener caracteres de 2 a 45" )
-	@Column(name = "nombre_cat", length = 45)
+	@Column(name = "nombre_cat", length = 45, unique = true)
 	private String nombre;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "variable_id")
 	private Variable varible;
 

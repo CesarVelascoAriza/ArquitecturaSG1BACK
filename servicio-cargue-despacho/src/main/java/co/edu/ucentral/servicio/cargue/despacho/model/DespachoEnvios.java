@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 import co.edu.ucentral.common.despacho.model.Despacho;
 
 @Entity
-@Table(name = "despacho_envios")
+@Table(name = "despacho_envios")  
 public class DespachoEnvios implements Serializable{
 
 	
@@ -38,6 +38,7 @@ public class DespachoEnvios implements Serializable{
 	private Despacho despacho;
 	@Column(name = "envio_id")
 	private Long envio;
+	private byte entregado;
 	
 	@PrePersist
 	public void prePersist() {
@@ -82,6 +83,14 @@ public class DespachoEnvios implements Serializable{
 
 	public void setEnvio(Long envio) {
 		this.envio = envio;
+	}
+
+	public byte getEntregado() {
+		return entregado;
+	}
+
+	public void setEntregado(byte entregado) {
+		this.entregado = entregado;
 	}
 	
 	

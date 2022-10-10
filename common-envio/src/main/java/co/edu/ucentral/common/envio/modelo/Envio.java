@@ -1,4 +1,4 @@
-package co.edu.ucentral.servicio.envios.model;
+package co.edu.ucentral.common.envio.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
