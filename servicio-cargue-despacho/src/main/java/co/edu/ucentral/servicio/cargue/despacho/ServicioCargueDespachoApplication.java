@@ -7,7 +7,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @SpringBootApplication
 @EntityScan({
 	"co.edu.ucentral.common.despacho.model",
-	"co.edu.ucentral.servicio.cargue.despacho"
+	"co.edu.ucentral.servicio.cargue.despacho",
+	"co.edu.ucentral.common.envio.modelo",
+	"co.edu.ucentral.common.oficina.model",
+	"co.edu.ucentral.commons.model",
+	"co.edu.ucentral.commons.usuario.models"
 })
 public class ServicioCargueDespachoApplication {
 

@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,7 +23,7 @@ import co.edu.ucentral.commons.usuario.models.Usuario;
 
 @Entity
 @Table(name = "envios")
-public class Envio implements Serializable{
+public class Envio implements Serializable {
 
 	/**
 	 * 
@@ -37,16 +36,16 @@ public class Envio implements Serializable{
 	@Column(name = "fecha_creacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date fechaCreacion;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_emisor")
 	private Usuario usuarioEmisor;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "usuario_receptor")
 	private Usuario usuarioReceptor;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ciudad_origen")
 	private Ciudad ciudadOrigen;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ciudad_destino")
 	private Ciudad ciudadDestino;
 	@ManyToOne
@@ -114,5 +113,4 @@ public class Envio implements Serializable{
 		this.tarifa = tarifa;
 	}
 
-	
 }

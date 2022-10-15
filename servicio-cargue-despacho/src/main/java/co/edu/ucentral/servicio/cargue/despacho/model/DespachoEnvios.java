@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import co.edu.ucentral.common.despacho.model.Despacho;
+import co.edu.ucentral.common.envio.modelo.Envio;
 
 @Entity
 @Table(name = "despacho_envios")  
@@ -36,8 +37,9 @@ public class DespachoEnvios implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "despacho_id")
 	private Despacho despacho;
-	@Column(name = "envio_id")
-	private Long envio;
+	@ManyToOne
+	@JoinColumn(name = "envio_id")
+	private Envio envio;
 	private byte entregado;
 	
 	@PrePersist
@@ -77,11 +79,11 @@ public class DespachoEnvios implements Serializable{
 		this.despacho = despacho;
 	}
 
-	public Long getEnvio() {
+	public Envio getEnvio() {
 		return envio;
 	}
 
-	public void setEnvio(Long envio) {
+	public void setEnvio(Envio envio) {
 		this.envio = envio;
 	}
 
