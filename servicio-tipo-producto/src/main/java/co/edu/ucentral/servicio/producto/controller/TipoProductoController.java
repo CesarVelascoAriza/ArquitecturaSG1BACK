@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,10 @@ public class TipoProductoController extends CommonsController<Variable, TipoProd
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> actualizar(@PathVariable Long id ,@Valid @RequestBody Variable producto){
+	public ResponseEntity<?> actualizar(@Valid @RequestBody Variable producto,@PathVariable Long id ,BindingResult result ){
+		if(result.hasErrors()) {
+			return this.validar(result);
+		}
 		Optional<Variable> optional = this.service.findById(id);
 		if(!optional.isPresent()) {
 			return ResponseEntity.notFound().build();
