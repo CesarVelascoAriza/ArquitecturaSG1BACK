@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import co.edu.ucentral.common.oficina.model.Ciudad;
+import co.edu.ucentral.commons.estado.model.Estado;
 import co.edu.ucentral.commons.model.Tarifa;
 import co.edu.ucentral.commons.usuario.models.Usuario;
 
@@ -32,7 +33,7 @@ public class Envio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
+	public Long id;
 	@Column(name = "fecha_creacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date fechaCreacion;
@@ -50,18 +51,21 @@ public class Envio implements Serializable {
 	private Ciudad ciudadDestino;
 	@ManyToOne
 	@JoinColumn(name = "tarifa_id")
-	private Tarifa tarifa;
+	private Tarifa tarifa; 
+	@ManyToOne
+	@JoinColumn(name = "estado_id")
+	private Estado estado;
 
 	@PrePersist
 	public void prePersist() {
 		fechaCreacion = new Date();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -111,6 +115,14 @@ public class Envio implements Serializable {
 
 	public void setTarifa(Tarifa tarifa) {
 		this.tarifa = tarifa;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 }

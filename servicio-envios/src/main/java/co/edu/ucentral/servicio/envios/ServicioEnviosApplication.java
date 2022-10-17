@@ -10,7 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 	"co.edu.ucentral.commons.usuario.models",
 	"co.edu.ucentral.commons.model",
 	"co.edu.ucentral.common.envio.modelo",
-	"co.edu.ucentral.common.oficina.model"
+	"co.edu.ucentral.common.oficina.model",
+	"co.edu.ucentral.commons.estado.model"
 })
 @EnableFeignClients
 public class ServicioEnviosApplication {

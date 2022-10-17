@@ -1,11 +1,15 @@
 package co.edu.ucentral.servicio.envios.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +28,18 @@ public class EnvioController extends CommonsController<Envio, EnvioService>{
 		service.crearUsuario(envio.getUsuarioEmisor());
 		service.crearUsuario(envio.getUsuarioReceptor());
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(envio));
+		
+	}
+	@PutMapping("/{id}")
+	public ResponseEntity<?> actualizarEstado(@PathVariable Long id, @Valid @RequestBody Envio envio,BindingResult result){
+		if(result.hasErrors())
+			this.validar(result);
+		Optional<Envio> optional = service.findById(id);
+		if(!optional.isPresent())
+			return ResponseEntity.notFound().build();
+		Envio envioDB= optional.get();
+		envioDB.setEstado(envio.getEstado());
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(envioDB));
 		
 	}
 }
