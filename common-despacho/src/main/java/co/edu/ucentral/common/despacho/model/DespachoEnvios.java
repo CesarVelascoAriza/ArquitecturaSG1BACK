@@ -1,4 +1,4 @@
-package co.edu.ucentral.servicio.cargue.despacho.model;
+package co.edu.ucentral.common.despacho.model;
 
 import java.io.Serializable;
 import java.util.Date;
