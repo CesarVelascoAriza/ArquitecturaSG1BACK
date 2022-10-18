@@ -37,10 +37,10 @@ public class Envio implements Serializable {
 	@Column(name = "fecha_creacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date fechaCreacion;
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_emisor")
 	private Usuario usuarioEmisor;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_receptor")
 	private Usuario usuarioReceptor;
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
