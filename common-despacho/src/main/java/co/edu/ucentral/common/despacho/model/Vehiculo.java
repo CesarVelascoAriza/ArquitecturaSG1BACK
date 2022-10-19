@@ -2,8 +2,10 @@ package co.edu.ucentral.common.despacho.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,11 +27,11 @@ public class Vehiculo implements Serializable {
 	private Long id;
 	@Column(unique = true)
 	private String placa;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
-	@ManyToOne
-	@JoinColumn(name = "medio_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "medio_id",referencedColumnName = "id")
 	private MedioTransporte medio;
 
 	public Vehiculo() {

@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @EnableEurekaClient
 @EntityScan({
-	"co.edu.ucentral.common.despacho.model"
+	"co.edu.ucentral.commons.estado.model"
 })
 public class ServicioEstadoApplication {
 

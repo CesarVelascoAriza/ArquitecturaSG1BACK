@@ -28,8 +28,8 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>co.edu.ucentral.common.despacho</groupId>
-			<artifactId>common-despacho</artifactId>
+			<groupId>co.edu.ucentral.commons.estado</groupId>
+			<artifactId>commons-estado</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

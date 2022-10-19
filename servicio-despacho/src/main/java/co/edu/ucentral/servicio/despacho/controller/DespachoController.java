@@ -1,5 +1,7 @@
 package co.edu.ucentral.servicio.despacho.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.ucentral.common.despacho.model.Despacho;
+import co.edu.ucentral.common.despacho.model.DespachoEnvios;
 import co.edu.ucentral.commons.services.controller.CommonsController;
 import co.edu.ucentral.servicio.despacho.service.DespachoService;
 
@@ -30,6 +33,17 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 		despachoDB.setVehiculo(despacho.getVehiculo());
 		despachoDB.setEstadoDespacho(despacho.getEstadoDespacho());
 		despachoDB.setObservaciones(despacho.getObservaciones());
+		List<DespachoEnvios> eliminados= new  ArrayList<DespachoEnvios>();
+		
+		despachoDB.getDespachos().forEach(desEnv->{
+			if(!despacho.getDespachos().contains(desEnv)) {
+				eliminados.add(desEnv);
+			}
+		});
+		eliminados.forEach(d->{
+			despachoDB.removeDespachoEnvio(d);
+		});
+		despachoDB.setDespachos(despacho.getDespachos());
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(despachoDB));
 	}
 }
