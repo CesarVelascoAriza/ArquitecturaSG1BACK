@@ -8,13 +8,16 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.ucentral.common.despacho.model.Despacho;
 import co.edu.ucentral.common.despacho.model.DespachoEnvios;
+import co.edu.ucentral.common.envio.modelo.Envio;
 import co.edu.ucentral.commons.services.controller.CommonsController;
 import co.edu.ucentral.servicio.despacho.service.DespachoService;
 
@@ -29,6 +32,10 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 		}
 		Despacho despachoDB = optional.get();
 		despachoDB.setOrigen(despacho.getOrigen());
+		
+		
+		
+		
 		despachoDB.setDestino(despacho.getDestino());
 		despachoDB.setVehiculo(despacho.getVehiculo());
 		despachoDB.setEstadoDespacho(despacho.getEstadoDespacho());
@@ -36,6 +43,9 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 		List<DespachoEnvios> eliminados= new  ArrayList<DespachoEnvios>();
 		
 		despachoDB.getDespachos().forEach(desEnv->{
+			ResponseEntity<Envio> optinal =service.getIdEnvio(desEnv.getEnvio().getId());
+			if(optinal.getStatusCode() == HttpStatus.NO_CONTENT)
+				eliminados.add(desEnv);
 			if(!despacho.getDespachos().contains(desEnv)) {
 				eliminados.add(desEnv);
 			}
@@ -45,5 +55,24 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 		});
 		despachoDB.setDespachos(despacho.getDespachos());
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(despachoDB));
+	}
+	@Override
+	@PostMapping
+	public ResponseEntity<?> crear(@Valid @RequestBody Despacho despacho, BindingResult result) {
+		if (result.hasErrors()) {
+			return this.validar(result);
+		}
+		List<DespachoEnvios> eliminados= new  ArrayList<DespachoEnvios>();
+		despacho.getDespachos().forEach(desEnv->{
+			ResponseEntity<Envio> optinal =service.getIdEnvio(desEnv.getEnvio().getId());
+			if(optinal.getStatusCode() == HttpStatus.NO_CONTENT) {
+				eliminados.add(desEnv);;
+			}
+		});
+		eliminados.forEach(d->{
+			despacho.removeDespachoEnvio(d);
+		});
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(despacho));
+
 	}
 }

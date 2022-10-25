@@ -38,7 +38,7 @@ public class CommonsController<E, S extends CommonsService<E>> {
 	public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
 		Optional<E> optional = service.findById(id);
 		if (!optional.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok(optional.get());
 	}
