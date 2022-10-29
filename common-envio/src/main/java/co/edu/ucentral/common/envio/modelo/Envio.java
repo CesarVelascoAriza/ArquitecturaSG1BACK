@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 
 import co.edu.ucentral.common.oficina.model.Ciudad;
 import co.edu.ucentral.commons.estado.model.Estado;
-import co.edu.ucentral.commons.model.Tarifa;
 import co.edu.ucentral.commons.usuario.models.Usuario;
 
 @Entity
@@ -49,9 +48,8 @@ public class Envio implements Serializable {
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ciudad_destino")
 	private Ciudad ciudadDestino;
-	@ManyToOne
-	@JoinColumn(name = "tarifa_id")
-	private Tarifa tarifa; 
+	private String descripcionEnvio;
+	private Float precio;
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
@@ -108,13 +106,21 @@ public class Envio implements Serializable {
 	public void setCiudadDestino(Ciudad ciudadDestino) {
 		this.ciudadDestino = ciudadDestino;
 	}
-
-	public Tarifa getTarifa() {
-		return tarifa;
+	
+	public String getDescripcionEnvio() {
+		return descripcionEnvio;
 	}
 
-	public void setTarifa(Tarifa tarifa) {
-		this.tarifa = tarifa;
+	public void setDescripcionEnvio(String descripcionEnvio) {
+		this.descripcionEnvio = descripcionEnvio;
+	}
+
+	public Float getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Float precio) {
+		this.precio = precio;
 	}
 
 	public Estado getEstado() {
