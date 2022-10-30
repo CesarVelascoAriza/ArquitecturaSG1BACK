@@ -51,6 +51,7 @@ public class Usuario implements Serializable{
 	@Column(length = 30,unique = true)
 	private String usuario;
 	private String contrasenia;
+	private Boolean enabled; 
 	@JsonIgnoreProperties(allowGetters = true)
 	@ManyToMany
 	@JoinTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
@@ -159,5 +160,18 @@ public class Usuario implements Serializable{
 		this.roles = roles;
 	}
 
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	
 	
 }

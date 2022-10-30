@@ -1,14 +1,13 @@
-package co.edu.ucentral.servicio.atenticacion;
+package co.edu.ucentral.servicio.ouath;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EntityScan({
-	"co.edu.ucentral.commons.usuario.models",
-	"co.edu.ucentral.common.empleado.model"
-})
+@EnableEurekaClient
+@EnableFeignClients
 public class ServicioAutenticacionApplication {
 
 	public static void main(String[] args) {
