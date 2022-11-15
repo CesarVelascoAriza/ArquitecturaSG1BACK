@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import co.edu.ucentral.common.oficina.model.Ciudad;
 import co.edu.ucentral.commons.estado.model.Estado;
 import co.edu.ucentral.commons.usuario.models.Usuario;
@@ -42,10 +44,11 @@ public class Envio implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_receptor")
 	private Usuario usuarioReceptor;
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn(name = "ciudad_origen")
 	private Ciudad ciudadOrigen;
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JsonIgnoreProperties(allowSetters = true,value = {"Departamento"})
+	@ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn(name = "ciudad_destino")
 	private Ciudad ciudadDestino;
 	private String descripcionEnvio;

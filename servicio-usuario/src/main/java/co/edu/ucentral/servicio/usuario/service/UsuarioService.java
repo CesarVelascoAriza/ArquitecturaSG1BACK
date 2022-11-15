@@ -5,4 +5,5 @@ import co.edu.ucentral.commons.usuario.models.Usuario;
 
 public interface UsuarioService  extends CommonsService<Usuario>{
 
+	public Usuario findByUsuario(String usuario);
 }

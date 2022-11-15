@@ -27,11 +27,11 @@ public class Vehiculo implements Serializable {
 	private Long id;
 	@Column(unique = true)
 	private String placa;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medio_id",referencedColumnName = "id")
+	@ManyToOne(fetch = FetchType.EAGER, cascade ={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name = "medio_id")
 	private MedioTransporte medio;
 
 	public Vehiculo() {

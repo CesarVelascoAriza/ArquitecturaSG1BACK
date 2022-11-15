@@ -8,4 +8,9 @@ import co.edu.ucentral.servicio.usuario.repository.UsuarioRepository;
 @Service 
 public class UsuarioServiceImpl  extends CommonsServiceImpl<Usuario, UsuarioRepository> implements UsuarioService{
 
+	@Override
+	public Usuario findByUsuario(String usuario){
+		return repository.findByUsername(usuario);
+	}
+
 }

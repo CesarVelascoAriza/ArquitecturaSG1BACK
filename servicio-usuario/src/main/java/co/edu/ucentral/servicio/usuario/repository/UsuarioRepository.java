@@ -6,4 +6,6 @@ import co.edu.ucentral.commons.usuario.models.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
+	
+	public Usuario findByUsername(String username);;
 }
