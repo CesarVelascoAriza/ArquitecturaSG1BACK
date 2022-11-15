@@ -37,8 +37,8 @@ public class UsuarioContoller extends CommonsController<Usuario, UsuarioService>
 		
 	}
 	
-	@GetMapping("/buercar-usuario-username")
-	public ResponseEntity<?> login(@Valid @RequestParam String  username, BindingResult result){
+	@GetMapping("/buercar-username")
+	public ResponseEntity<?> login(@RequestParam String  username){
 		return ResponseEntity.status(HttpStatus.OK).body(service.findByUsuario(username));
 	}
 }

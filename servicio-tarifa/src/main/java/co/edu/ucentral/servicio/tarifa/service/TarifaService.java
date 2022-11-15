@@ -4,5 +4,6 @@ import co.edu.ucentral.commons.model.Tarifa;
 import co.edu.ucentral.commons.services.service.CommonsService;
 
 public interface TarifaService extends CommonsService<Tarifa> {
-
+	
+	public Tarifa calcularTarifa(int min , int max);
 }

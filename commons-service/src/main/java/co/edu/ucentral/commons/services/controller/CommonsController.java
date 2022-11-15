@@ -54,7 +54,11 @@ public class CommonsController<E, S extends CommonsService<E>> {
 
 	@DeleteMapping("/{id}")
 	private ResponseEntity<?> eliminar(@PathVariable Long id) {
-		service.deleteById(id);
+		Optional<E> optional = service.findById(id);
+		if (!optional.isPresent()) {
+			return ResponseEntity.noContent().build();
+		} else
+			service.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
 

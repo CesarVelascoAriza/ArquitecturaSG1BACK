@@ -10,7 +10,7 @@ public class UsuarioServiceImpl  extends CommonsServiceImpl<Usuario, UsuarioRepo
 
 	@Override
 	public Usuario findByUsuario(String usuario){
-		return repository.findByUsuario(usuario);
+		return repository.findByUsername(usuario);
 	}
 
 }

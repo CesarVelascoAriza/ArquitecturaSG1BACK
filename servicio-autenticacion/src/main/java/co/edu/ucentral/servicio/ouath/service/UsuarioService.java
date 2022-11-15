@@ -30,7 +30,7 @@ public class UsuarioService implements IUsuarioService ,UserDetailsService {
 				.map(roles->new SimpleGrantedAuthority(roles.getNombreRol()))
 				.collect(Collectors.toList());
 				
-		return new User(usuario.getUsuario(),usuario.getContrasenia(),usuario.getEnabled(),true,true,true,autirities);
+		return new User(usuario.getUsername(),usuario.getPassword(),usuario.getEnabled(),true,true,true,autirities);
 	}
 
 	@Override

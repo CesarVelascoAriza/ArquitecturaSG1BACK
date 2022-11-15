@@ -49,8 +49,8 @@ public class Usuario implements Serializable{
 	@Size(min = 8, max = 11, message = "no puede ser menor de 8 o mayor de 11")
 	private String telefono;
 	@Column(length = 30,unique = true)
-	private String usuario;
-	private String contrasenia;
+	private String username;
+	private String password;
 	private Boolean enabled; 
 	@JsonIgnoreProperties(allowGetters = true)
 	@ManyToMany
@@ -125,27 +125,24 @@ public class Usuario implements Serializable{
 	}
 
 
-
-	public String getUsuario() {
-		return usuario;
+	public String getUsername() {
+		return username;
 	}
 
 
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 
 
-	public String getContrasenia() {
-		return contrasenia;
-	}
-
-
-
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

@@ -15,7 +15,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import co.edu.ucentral.common.despacho.model.Despacho;
 import co.edu.ucentral.common.envio.modelo.Envio;
 
 @Entity
@@ -40,7 +39,7 @@ public class DespachoEnvios implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "envio_id")
 	private Envio envio;
-	private byte entregado;
+	private boolean entregado;
 	
 	@PrePersist
 	public void prePersist() {
@@ -87,11 +86,11 @@ public class DespachoEnvios implements Serializable{
 		this.envio = envio;
 	}
 
-	public byte getEntregado() {
+	public boolean getEntregado() {
 		return entregado;
 	}
 
-	public void setEntregado(byte entregado) {
+	public void setEntregado(boolean entregado) {
 		this.entregado = entregado;
 	}
 	
