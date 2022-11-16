@@ -1,5 +1,7 @@
 package co.edu.ucentral.servicio.envios.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,15 @@ public class EnvioServiceImpl extends CommonsServiceImpl<Envio, EnvioRepository>
 	
 	@Override
 	public Usuario crearUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		return feingCliente.crear(usuario);
 	}
+
+	@Override
+	public List<Envio> listadoEnvioPorAdmicion(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findEnvioEstadoById(id);
+	}
+
+	
 
 }

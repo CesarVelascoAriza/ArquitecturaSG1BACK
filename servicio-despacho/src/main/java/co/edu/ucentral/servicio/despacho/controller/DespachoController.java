@@ -32,10 +32,6 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 		}
 		Despacho despachoDB = optional.get();
 		despachoDB.setOrigen(despacho.getOrigen());
-		
-		
-		
-		
 		despachoDB.setDestino(despacho.getDestino());
 		despachoDB.setVehiculo(despacho.getVehiculo());
 		despachoDB.setEstadoDespacho(despacho.getEstadoDespacho());
@@ -48,6 +44,18 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 				eliminados.add(desEnv);
 			if(!despacho.getDespachos().contains(desEnv)) {
 				eliminados.add(desEnv);
+			}
+			if(desEnv.getEntregado() && (despacho.getEstadoDespacho().getId()==3)) {
+				desEnv.getEnvio().getEstado().setId(2L);
+				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
+			}
+			else if (desEnv.getEntregado()) {
+				desEnv.getEnvio().getEstado().setId(2L);
+				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
+			}
+			else {
+				desEnv.getEnvio().getEstado().setId(7L);
+				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
 		});
 		eliminados.forEach(d->{
@@ -67,6 +75,11 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 			ResponseEntity<Envio> optinal =service.getIdEnvio(desEnv.getEnvio().getId());
 			if(optinal.getStatusCode() == HttpStatus.NO_CONTENT) {
 				eliminados.add(desEnv);;
+			}
+			
+			if(despacho.getEstadoDespacho().getId()==3) {
+				desEnv.getEnvio().getEstado().setId(3L);
+				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
 		});
 		eliminados.forEach(d->{

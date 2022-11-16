@@ -6,5 +6,5 @@ import co.edu.ucentral.commons.model.Tarifa;
 
 public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
 
-	public Tarifa findByValorMinGreaterThanAndValorMaxLessThanEqual(int min, int max);
+	public Tarifa findByValorMinLessThanEqualAndValorMaxGreaterThan(int min, int max);
 }

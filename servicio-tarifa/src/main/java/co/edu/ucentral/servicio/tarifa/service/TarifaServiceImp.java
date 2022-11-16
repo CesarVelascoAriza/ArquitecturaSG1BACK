@@ -12,7 +12,7 @@ public class TarifaServiceImp extends CommonsServiceImpl<Tarifa, TarifaRepositor
 	@Override
 	public Tarifa calcularTarifa(int min, int max) {
 		// TODO Auto-generated method stub
-		return repository.findByValorMinGreaterThanAndValorMaxLessThanEqual(min, max);
+		return repository.findByValorMinLessThanEqualAndValorMaxGreaterThan(min, max);
 	}
 
 }

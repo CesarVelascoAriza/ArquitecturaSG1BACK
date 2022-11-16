@@ -1,7 +1,5 @@
 package co.edu.ucentral.servicio.despacho.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,6 +21,11 @@ public class DespachoServiceImpl extends CommonsServiceImpl<Despacho, DespachoRe
 	@Override
 	public ResponseEntity<Envio> getIdEnvio(Long id) {
 		return clienteEnvio.getIdEnvio(id);
+	}
+	@Override
+	public ResponseEntity<?> actualizarEstado(Long id, Envio envio) {
+		// TODO Auto-generated method stub
+		return clienteEnvio.actualizarEstado(id, envio);
 	}
 
 }
