@@ -45,16 +45,16 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 			if(!despacho.getDespachos().contains(desEnv)) {
 				eliminados.add(desEnv);
 			}
-			if(desEnv.getEntregado() && (despacho.getEstadoDespacho().getId()==3)) {
+			if(desEnv.getEntregado() && (despacho.getEstadoDespacho().getId()==6)) {
 				desEnv.getEnvio().getEstado().setId(2L);
 				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
-			else if (desEnv.getEntregado()) {
-				desEnv.getEnvio().getEstado().setId(2L);
+			else if (desEnv.getEntregado() && (despacho.getEstadoDespacho().getId()==4)) {
+				desEnv.getEnvio().getEstado().setId(11L);
 				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
 			else {
-				desEnv.getEnvio().getEstado().setId(7L);
+				desEnv.getEnvio().getEstado().setId(11L);
 				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
 		});
@@ -79,6 +79,10 @@ public class DespachoController extends CommonsController<Despacho, DespachoServ
 			
 			if(despacho.getEstadoDespacho().getId()==3) {
 				desEnv.getEnvio().getEstado().setId(3L);
+				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
+			}else {
+				desEnv.getEnvio().getEstado().setId(10L);
+				
 				service.actualizarEstado(desEnv.getEnvio().getId(), desEnv.getEnvio());
 			}
 		});

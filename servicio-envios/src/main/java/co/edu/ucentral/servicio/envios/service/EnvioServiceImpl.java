@@ -23,11 +23,12 @@ public class EnvioServiceImpl extends CommonsServiceImpl<Envio, EnvioRepository>
 	}
 
 	@Override
-	public List<Envio> listadoEnvioPorAdmicion(Long id) {
+	public List<Envio> listadoEnvioPorAdmicion(Long[] id) {
 		// TODO Auto-generated method stub
-		return repository.findEnvioEstadoById(id);
+		return repository.findEnvioEstadoByIdIn(id);
 	}
 
+	
 	
 
 }

@@ -24,6 +24,13 @@ public class Rol implements Serializable {
 	@Column(length = 45, name = "nombre_rol",unique = true)
 	private String nombreRol;
 
+	public Rol() {
+	}
+	public Rol(Long id) {
+		super();
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}

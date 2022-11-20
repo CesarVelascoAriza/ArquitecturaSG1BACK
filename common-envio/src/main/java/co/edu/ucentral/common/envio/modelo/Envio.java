@@ -56,7 +56,8 @@ public class Envio implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
-
+	private int peso;
+	
 	@PrePersist
 	public void prePersist() {
 		fechaCreacion = new Date();
@@ -134,4 +135,13 @@ public class Envio implements Serializable {
 		this.estado = estado;
 	}
 
+	public int getPeso() {
+		return peso;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
+
+	
 }

@@ -9,5 +9,5 @@ import co.edu.ucentral.commons.usuario.models.Usuario;
 public interface EnvioService extends CommonsService<Envio>{
 
 	public Usuario crearUsuario(Usuario usuario);
-	public List<Envio> listadoEnvioPorAdmicion(Long id);
+	public List<Envio> listadoEnvioPorAdmicion(Long[] id);
 }

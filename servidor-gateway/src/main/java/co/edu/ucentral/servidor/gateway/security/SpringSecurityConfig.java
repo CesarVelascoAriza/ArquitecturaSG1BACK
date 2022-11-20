@@ -17,14 +17,13 @@ public class SpringSecurityConfig {
 	@Bean
 	public SecurityWebFilterChain configure(ServerHttpSecurity http) {
 				return http.authorizeExchange()
-						.pathMatchers("/api/security/oauth/**","/api/envio/**","/api/parametro/**","/api/oficina/**","/api/tarifa/**","/api/usuario/**","/api/tipo_producto/**","/api/categoria/**","/api/estado/**","/api/tipoDocumento/**",
-								"/api/marca/**","/api/medioTransporte/**","/api/vehiculo/**","/api/ciudad/**","api/tipo_producto/**","/api/despachos/**").permitAll()
-				//.pathMatchers(HttpMethod.POST,"/api/usuario/").permitAll()
-				//.pathMatchers(HttpMethod.GET,"/api/envio/{id}","/api/tipoDocumento","/api/estado","/api/ciudad").permitAll()
-				//.pathMatchers("/api/despachos/**","/api/envio/**").hasAnyRole("ADMIN","EMPLEADO")
-				//.pathMatchers("/api/parametro/**","/api/oficina/**","/api/tarifa/**",
-				//		"/api/usuario/**","/api/tipo_producto/**","/api/categoria/**","/api/estado/**","/api/tipoDocumento/**",
-			//			"/api/marca/**").hasRole("ADMIN")
+				.pathMatchers("/api/security/oauth/**").permitAll()
+				.pathMatchers(HttpMethod.POST,"/api/usuario").permitAll()
+				.pathMatchers(HttpMethod.GET,"/api/envio/{id}","/api/tipoDocumento","/api/estado","/api/ciudad","/api/cargue_despacho/guia/{id}").permitAll()
+				.pathMatchers("/api/despachos/**","/api/envio/**","/api/tarifa/**").hasAnyRole("ADMIN","EMPLEADO")
+				.pathMatchers("/api/parametro/**","/api/oficina/**","/api/tarifa/**",
+						"/api/usuario/**","/api/tipo_producto/**","/api/categoria/**","/api/estado/**","/api/tipoDocumento/**",
+						"/api/marca/**").hasRole("ADMIN")
 				.anyExchange()
 				.authenticated()
 				.and()

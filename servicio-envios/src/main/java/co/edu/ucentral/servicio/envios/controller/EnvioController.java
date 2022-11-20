@@ -45,7 +45,12 @@ public class EnvioController extends CommonsController<Envio, EnvioService>{
 		
 	}
 	@GetMapping("/listado-estado-admincion")
-	public ResponseEntity<?> listadoAdminicion(@RequestParam Long id){
+	public ResponseEntity<?> listadoAdminicion(@RequestParam Long[] id){
+		return ResponseEntity.ok().body(service.listadoEnvioPorAdmicion(id));
+	}
+	
+	@PostMapping("/listado-estado-admincion-2")
+	public ResponseEntity<?> listadoAdminicionDos(@RequestParam Long[] id){
 		return ResponseEntity.ok().body(service.listadoEnvioPorAdmicion(id));
 	}
 }

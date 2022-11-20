@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import co.edu.ucentral.common.envio.modelo.Envio;
 
-@FeignClient(name = "servicio-envio" , url = "localhost:8090/api/envio")
+@FeignClient(name = "servicio-envio")
 public interface ClienteFeingEnvio {
 	
 	
