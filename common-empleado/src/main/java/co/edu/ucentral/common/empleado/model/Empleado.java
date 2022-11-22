@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import co.edu.ucentral.commons.usuario.models.Correo;
+//import co.edu.ucentral.commons.usuario.models.Correo;
 import co.edu.ucentral.commons.usuario.models.TipoDocumento;
 
 @Entity
@@ -37,9 +37,9 @@ public class Empleado implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_rol")
 	private Rol rol;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "correo", nullable = false, unique = true)	
-	private Correo correo;
+	//@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@JoinColumn(name = "correo", nullable = false, unique = true)	
+	//private Correo correo;
 	
 
 	public Empleado() {
@@ -47,7 +47,7 @@ public class Empleado implements Serializable {
 	
 	
 	public Empleado(Long numeroDocumento, TipoDocumento tipo, String nombre, String apellido, Date fechaNacimeinto,
-			Rol rol, Correo coreo) {
+			Rol rol) {
 		super();
 		this.numeroDocumento = numeroDocumento;
 		this.tipo = tipo;
@@ -55,7 +55,7 @@ public class Empleado implements Serializable {
 		this.apellido = apellido;
 		this.fechaNacimeinto = fechaNacimeinto;
 		this.rol = rol;
-		this.correo = coreo;
+		//this.correo = coreo;
 	}
 
 
@@ -107,13 +107,13 @@ public class Empleado implements Serializable {
 		this.rol = rol;
 	}
 
-	public Correo getCoreo() {
-		return correo;
-	}
-
-	public void setCoreo(Correo coreo) {
-		this.correo = coreo;
-	}
+//	public Correo getCoreo() {
+//		return correo;
+//	}
+//
+//	public void setCoreo(Correo coreo) {
+//		this.correo = coreo;
+//	}
 	
 
 }
