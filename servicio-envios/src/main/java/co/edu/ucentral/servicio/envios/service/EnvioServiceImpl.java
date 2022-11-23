@@ -1,5 +1,6 @@
 package co.edu.ucentral.servicio.envios.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class EnvioServiceImpl extends CommonsServiceImpl<Envio, EnvioRepository>
 	public List<Envio> listadoEnvioPorAdmicion(Long[] id) {
 		// TODO Auto-generated method stub
 		return repository.findEnvioEstadoByIdIn(id);
+	}
+
+	@Override
+	public Iterable<Envio> buscarPorFechasYUsuario(Long numero, Date fechaInical, Date fechaFinal) {
+		// TODO Auto-generated method stub
+		return repository.findEnvioByUsuarioEmisorAndFechaCreacionBetween(numero, fechaInical, fechaFinal);
 	}
 
 	

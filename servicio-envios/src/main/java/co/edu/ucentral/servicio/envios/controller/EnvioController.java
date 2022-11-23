@@ -1,5 +1,7 @@
 package co.edu.ucentral.servicio.envios.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -53,4 +55,11 @@ public class EnvioController extends CommonsController<Envio, EnvioService>{
 	public ResponseEntity<?> listadoAdminicionDos(@RequestParam Long[] id){
 		return ResponseEntity.ok().body(service.listadoEnvioPorAdmicion(id));
 	}
+	
+	@PostMapping("/listado-por-usuario-fecha")
+	public ResponseEntity<?> listadoPorUsuarioYFecha(@RequestParam Long id, @RequestParam String fechaInicial, @RequestParam  String fechaFinal) throws ParseException{
+		return ResponseEntity.ok().body(service.buscarPorFechasYUsuario(id, new SimpleDateFormat("yyyy-MM-dd").parse(fechaInicial) , new SimpleDateFormat("yyyy-MM-dd").parse(fechaFinal)));
+	}
+	
+	
 }
