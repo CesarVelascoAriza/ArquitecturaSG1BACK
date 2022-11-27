@@ -40,9 +40,10 @@ public class EnvioController extends CommonsController<Envio, EnvioService>{
 			this.validar(result);
 		Optional<Envio> optional = service.findById(id);
 		if(!optional.isPresent())
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.noContent().build();
 		Envio envioDB= optional.get();
 		envioDB.setEstado(envio.getEstado());
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(envioDB));
 		
 	}
